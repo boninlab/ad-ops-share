@@ -1,0 +1,230 @@
+{
+  "naverAdsUrl": "https://manage.searchad.naver.com",
+  "naverAdAccountId": 1000000,
+  "browserMode": "profile",
+  "browserCdpUrl": "http://127.0.0.1:9222",
+  "chromeProfileDir": ".chrome-profile/naver-search-ads",
+  "runOutputDir": "runs",
+  "submitMode": "manual",
+  "template": {
+    "vendorName": "샘플스토어",
+    "productName": "와이드청바지",
+    "endRoas": "300",
+    "productId": "sample",
+    "exposureProductName": "샘플 와이드 데님 청바지"
+  },
+  "campaign": {
+    "name": "샘플스토어)와이드청바지300",
+    "dailyBudget": 10000,
+    "useAutoTracking": true,
+    "useBudgetDistribution": false
+  },
+  "adGroup": {
+    "name": "샘플스토어)와이드청바지300",
+    "mallName": "",
+    "shoppingPartnerCenterId": "",
+    "defaultBidPrice": 340,
+    "dailyBudget": 10000
+  },
+  "material": {
+    "exposureProductName": "샘플 와이드 데님 청바지"
+  },
+  "products": [
+    {
+      "searchType": "productId",
+      "query": "sample",
+      "expectedName": ""
+    }
+  ],
+  "powerlink": {
+    "campaignUrl": "https://ads.naver.com/manage/ad-accounts/1000000/sa/campaigns/cmp-a001-01-000000000000001",
+    "campaignId": "cmp-a001-01-000000000000001",
+    "template": {
+      "vendorName": "샘플스토어",
+      "productName": "와이드청바지",
+      "endRoas": "300",
+      "keyword": "와이드청바지"
+    },
+    "adGroup": {
+      "name": "샘플스토어)와이드청바지300",
+      "defaultBidPrice": 340,
+      "dailyBudget": 10000
+    },
+    "material": {
+      "headline": "매일 입는 와이드청바지",
+      "description": "여유로운 와이드핏과 자연스러운 데님 컬러로 완성하는 데일리룩",
+      "productLink": "https://smartstore.naver.com/sample/products/sample"
+    },
+    "keywords": [
+      "와이드청바지",
+      "데님팬츠",
+      "와이드데님",
+      "청바지"
+    ],
+    "extensions": {
+      "subLinks": [
+        {
+          "name": "상의",
+          "final": "https://smartstore.naver.com/sample"
+        },
+        {
+          "name": "하의",
+          "final": "https://smartstore.naver.com/sample"
+        },
+        {
+          "name": "1+1",
+          "final": "https://smartstore.naver.com/sample"
+        },
+        {
+          "name": "당일출고",
+          "final": "https://smartstore.naver.com/sample"
+        }
+      ],
+      "promotionText": "데일리 와이드핏",
+      "headlines": [
+        "여유로운 와이드핏",
+        "데일리 데님 팬츠"
+      ],
+      "extraDescription": "편안한 와이드핏 청바지로 일상의 스타일을 완성하세요"
+    },
+    "imageAssets": [
+      {
+        "fileName": "sample-powerlink.jpg",
+        "path": "data/display-native-assets/sample-powerlink.jpg",
+        "mimeType": "image/jpeg",
+        "size": 113965,
+        "uploadedAt": "2026-01-01T00:00:00.000Z"
+      }
+    ]
+  },
+  "displayNative": {
+    "campaignUrl": "https://ads.naver.com/manage/ad-accounts/1000000/da/dashboard/campaign/1000001",
+    "campaignId": "1000001",
+    "template": {
+      "vendorName": "샘플스토어",
+      "productName": "와이드청바지",
+      "endRoas": "300"
+    },
+    "adGroup": {
+      "name": "샘플스토어)와이드청바지300",
+      "dailyBudget": 10000,
+      "bidStrategyValue": 450,
+      "startAt": ""
+    },
+    "demographics": {
+      "genders": [
+        "male"
+      ],
+      "includeUnknownGender": false,
+      "ageMode": "manual",
+      "ages": [
+        "19-24",
+        "25-29",
+        "30-34",
+        "35-39",
+        "40-44",
+        "45-49",
+        "50-54",
+        "55-59"
+      ],
+      "includeUnknownAge": true
+    },
+    "material": {
+      "landingUrl": "https://smartstore.naver.com/sample/products/sample",
+      "adText": "매일 입는 와이드 청바지",
+      "descriptions": {
+        "short1": "여유로운 와이드핏",
+        "short2": "자연스러운 데님",
+        "short3": "매일 입는 청바지",
+        "long1": "여유로운 와이드핏으로 완성하는 데일리룩",
+        "long2": "자연스러운 블루 데님을 만나보세요"
+      }
+    },
+    "imageAssets": {
+      "profile": {
+        "fileName": "sample-profile.jpg",
+        "path": "data/display-native-assets/sample-profile.jpg",
+        "mimeType": "image/jpeg",
+        "size": 24655,
+        "uploadedAt": "2026-01-01T00:00:00.000Z"
+      },
+      "square": {
+        "fileName": "sample-square.jpg",
+        "path": "data/display-native-assets/sample-square.jpg",
+        "mimeType": "image/jpeg",
+        "size": 417663,
+        "uploadedAt": "2026-01-01T00:00:00.000Z"
+      },
+      "wide": {
+        "fileName": "sample-wide.jpg",
+        "path": "data/display-native-assets/sample-wide.jpg",
+        "mimeType": "image/jpeg",
+        "size": 90813,
+        "uploadedAt": "2026-01-01T00:00:00.000Z"
+      },
+      "tall": {
+        "fileName": "sample-tall.jpg",
+        "path": "data/display-native-assets/sample-tall.jpg",
+        "mimeType": "image/jpeg",
+        "size": 338674,
+        "uploadedAt": "2026-01-01T00:00:00.000Z"
+      },
+      "banner": {
+        "fileName": "sample-banner.jpg",
+        "path": "data/display-native-assets/sample-banner.jpg",
+        "mimeType": "image/jpeg",
+        "size": 11884,
+        "uploadedAt": "2026-01-01T00:00:00.000Z"
+      }
+    }
+  },
+  "shoppingPromotion": {
+    "campaignUrl": "https://ads.naver.com/manage/ad-accounts/1000000/da/dashboard/campaign/1000004",
+    "campaignId": "1000004",
+    "template": {
+      "vendorName": "샘플스토어",
+      "productName": "와이드청바지",
+      "endRoas": "300"
+    },
+    "adGroup": {
+      "name": "샘플스토어)와이드청바지300",
+      "dailyBudget": 10000,
+      "startAt": ""
+    },
+    "demographics": {
+      "genders": [
+        "male"
+      ],
+      "includeUnknownGender": false,
+      "ageMode": "manual",
+      "ages": [
+        "19-24",
+        "25-29",
+        "30-34",
+        "35-39",
+        "40-44",
+        "45-49",
+        "50-54",
+        "55-59"
+      ],
+      "includeUnknownAge": true
+    },
+    "material": {
+      "landingUrl": "https://smartstore.naver.com/sample/products/sample",
+      "adText": "여유로운 와이드핏과 자연스러운 데님 컬러, 매일 입는 와이드 청바지"
+    },
+    "imageAsset": {
+      "fileName": "sample-promotion.jpg",
+      "path": "data/display-native-assets/sample-promotion.jpg",
+      "mimeType": "image/jpeg",
+      "size": 53923,
+      "uploadedAt": "2026-01-01T00:00:00.000Z"
+    }
+  },
+  "extensions": {
+    "useTalkTalk": false,
+    "talkTalkUrl": "http://talk.naver.com/sample",
+    "promotionText1": "여유로운 와이드핏",
+    "promotionText2": "매일 입기 좋은 샘플 와이드 데님 청바지"
+  }
+}

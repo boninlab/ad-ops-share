@@ -1,0 +1,20 @@
+{
+  "name": "ad-ops-automation-toolkit",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "web": "tsx src/server.ts",
+    "chrome:debug": "open -na \"Google Chrome\" --args --remote-debugging-port=9222"
+  },
+  "dependencies": {
+    "playwright-core": "^1.52.0",
+    "zod": "^3.24.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}

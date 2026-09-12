@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.chrome-profile/
+runs/
+data/shopping-search-campaign.json
+data/powerlink-assets/
+data/display-native-assets/*
+!data/display-native-assets/sample-*.jpg
+data/shopping-promotion-assets/
+.DS_Store
+*.log
+
+.env
+.env.*
+!.env.example
+output/

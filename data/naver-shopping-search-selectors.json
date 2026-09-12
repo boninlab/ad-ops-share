@@ -1,0 +1,35 @@
+{
+  "buttons": {
+    "createAd": ["광고 만들기", "+ 광고 만들기", "새 광고 만들기", "새 캠페인"],
+    "saveAndContinue": ["저장하고 계속하기", "저장 후 계속하기", "저장 후 다음", "다음"],
+    "search": ["검색하기", "검색", "조회"],
+    "addProduct": ["검색한 상품 전체 추가", "전체 추가", "+추가", "추가"],
+    "createAds": ["광고만들기", "광고 만들기", "등록", "완료"],
+    "confirm": ["확인"],
+    "details": ["상세보기"],
+    "edit": ["수정"],
+    "save": ["저장"]
+  },
+  "fields": {
+    "campaignName": ["캠페인 이름", "캠페인명"],
+    "campaignDailyBudget": ["하루 예산", "캠페인 하루 예산"],
+    "adGroupName": ["광고그룹 이름", "광고 그룹 이름", "광고그룹명"],
+    "mallName": ["쇼핑몰", "쇼핑몰명"],
+    "shoppingPartnerCenterId": ["쇼핑파트너센터 ID", "쇼핑파트너센터 아이디", "파트너센터 ID"],
+    "defaultBidPrice": ["기본 입찰가", "입찰가"],
+    "adGroupDailyBudget": ["하루 예산", "광고그룹 하루 예산"],
+    "productName": ["상품명", "상품 이름"],
+    "productId": ["쇼핑몰 상품 ID", "쇼핑몰 상품ID", "상품ID", "상품 ID", "네이버 쇼핑 상품ID"],
+    "productSearch": ["상품 검색", "검색어"],
+    "exposureProductName": ["노출용 상품명"]
+  },
+  "choices": {
+    "campaignCreationByObjective": ["목적 선택하고 시작하기"],
+    "campaignObjectiveOnlineSales": ["온라인 판매"],
+    "campaignTypeShoppingSearch": ["쇼핑검색", "쇼핑 검색", "쇼핑검색광고", "쇼핑 검색 유형"],
+    "adGroupTypeShoppingMallProduct": ["쇼핑몰 상품형"],
+    "budgetDistribution": ["예산을 균등하게 배분합니다", "균등하게 배분"],
+    "productSearchTypeProductId": ["상품ID", "상품 ID"],
+    "productSearchProductIdTypeMall": ["쇼핑몰 상품 ID", "쇼핑몰 상품ID"]
+  }
+}

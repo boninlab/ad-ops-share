@@ -1,0 +1,645 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>네이버 광고 자동 등록</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1 id="pageTitle">쇼핑검색광고 등록</h1>
+        <p id="statusText">대기 중</p>
+        <nav class="tabbar" aria-label="광고 유형">
+          <button id="shoppingTab" type="button" class="tab active" data-tab="shopping">쇼핑검색광고</button>
+          <button id="powerlinkTab" type="button" class="tab" data-tab="powerlink">파워링크광고</button>
+          <button id="displayNativeTab" type="button" class="tab" data-tab="displayNative">디스플레이 네이티브 이미지</button>
+          <button id="shoppingPromotionTab" type="button" class="tab" data-tab="shoppingPromotion">쇼핑 프로모션 광고</button>
+        </nav>
+      </div>
+      <div class="actions">
+        <button id="saveButton" type="button">저장</button>
+        <button id="loginButton" type="button">로그인 열기</button>
+        <button id="runButton" type="button" class="primary">HTTP 등록</button>
+        <button id="closeButton" type="button">브라우저 닫기</button>
+      </div>
+    </header>
+
+    <main>
+      <div class="global-settings">
+        <section class="panel common-settings-panel">
+          <div class="section-title">기본 설정</div>
+          <div class="grid-4">
+            <label>
+              <span>거래처</span>
+              <input id="commonVendorName" autocomplete="off" />
+            </label>
+            <label>
+              <span>제품명</span>
+              <input id="commonProductName" autocomplete="off" />
+            </label>
+            <label>
+              <span>ENDROAS</span>
+              <input id="commonEndRoas" autocomplete="off" />
+            </label>
+            <label>
+              <span class="label-line">
+                <span>생성 이름</span>
+                <span id="commonGeneratedNameCount" class="counter">0/30자</span>
+              </span>
+              <input id="commonGeneratedName" autocomplete="off" readonly />
+            </label>
+          </div>
+          <label>
+            <span>상품 URL</span>
+            <input id="commonProductUrl" autocomplete="off" placeholder="https://smartstore.naver.com/.../products/..." />
+          </label>
+          <p class="note">여기 입력한 값은 쇼핑검색광고, 파워링크광고, 디스플레이 네이티브 이미지, 쇼핑 프로모션 광고에 공통 적용됩니다.</p>
+        </section>
+      </div>
+
+      <div id="shoppingPage" class="tab-page active" data-page="shopping">
+        <div class="layout">
+          <section class="panel">
+            <div class="section-title">쇼핑검색 설정</div>
+            <div class="grid-2">
+              <label>
+                <span>쇼핑몰 상품 ID</span>
+                <input id="productId" autocomplete="off" inputmode="numeric" />
+              </label>
+            </div>
+            <div class="grid-2">
+              <label>
+                <span>노출용 상품명</span>
+                <input id="exposureProductName" autocomplete="off" />
+              </label>
+            </div>
+            <label>
+              <span class="label-line">
+                <span>생성 이름</span>
+                <span id="generatedNameCount" class="counter">0/30자</span>
+              </span>
+              <input id="generatedName" autocomplete="off" readonly />
+            </label>
+            <p class="note">캠페인명과 광고그룹명은 거래처)제품명ENDROAS로 자동 저장됩니다. 노출용 상품명은 소재 수정 화면에서 저장됩니다.</p>
+          </section>
+
+          <section class="panel">
+            <div class="section-title">확장 소재</div>
+            <label class="check"><input id="shoppingUseTalkTalk" type="checkbox" checked /><span>네이버 톡톡 등록</span></label>
+            <label><span>네이버 톡톡 주소</span><input id="shoppingTalkTalkUrl" autocomplete="off" placeholder="http://talk.naver.com/sample" /></label>
+            <p class="note">비즈채널에 등록된 톡톡을 새 광고그룹에 연결합니다.</p>
+            <label>
+              <span class="label-line"><span>추가홍보문구 1</span><span id="shoppingPromotionText1Count" class="counter">0/10자</span></span>
+              <input id="shoppingPromotionText1" autocomplete="off" placeholder="예: 뒷밴딩 편안한 팬츠" />
+            </label>
+            <label>
+              <span class="label-line"><span>추가홍보문구 2 (선택)</span><span id="shoppingPromotionText2Count" class="counter">0/30자</span></span>
+              <input id="shoppingPromotionText2" autocomplete="off" placeholder="예: 뒷밴딩 편안한 면 팬츠 당일출고 무료배송" />
+            </label>
+            <p class="note">추가홍보문구를 등록하려면 문구 1을 입력하세요. 둘 다 비워두면 홍보문구 등록을 건너뜁니다.</p>
+          </section>
+
+          <section class="panel">
+            <div class="section-title">집행값</div>
+            <div class="grid-2">
+              <label>
+                <span>캠페인 하루 예산</span>
+                <input id="campaignDailyBudget" inputmode="numeric" />
+              </label>
+              <label>
+                <span>광고그룹 하루 예산</span>
+                <input id="adGroupDailyBudget" inputmode="numeric" />
+              </label>
+            </div>
+            <div class="grid-2">
+              <label>
+                <span>기본 입찰가</span>
+                <input id="defaultBidPrice" inputmode="numeric" />
+              </label>
+              <label class="check">
+                <input id="useBudgetDistribution" type="checkbox" />
+                <span>예산 균등 배분</span>
+              </label>
+              <label class="check">
+                <input id="useAutoTracking" type="checkbox" />
+                <span>자동 추적URL 파라미터</span>
+              </label>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <div id="powerlinkPage" class="tab-page" data-page="powerlink" hidden>
+        <div class="layout">
+          <section class="panel">
+            <div class="section-title">파워링크 설정</div>
+            <label>
+              <span>대상 캠페인 URL</span>
+              <input id="powerlinkCampaignUrl" autocomplete="off" />
+            </label>
+            <div class="grid-2">
+              <label>
+                <span>대표 키워드</span>
+                <input id="powerlinkKeyword" autocomplete="off" />
+              </label>
+            </div>
+            <label>
+              <span>키워드 목록</span>
+              <textarea id="powerlinkKeywordList" rows="14" placeholder="한 줄에 하나씩 입력하세요. 최대 1000개"></textarea>
+            </label>
+            <p id="powerlinkKeywordCount" class="note">키워드 0개</p>
+            <label>
+              <span class="label-line">
+                <span>생성 광고그룹명</span>
+                <span id="powerlinkGeneratedNameCount" class="counter">0/30자</span>
+              </span>
+              <input id="powerlinkGeneratedName" autocomplete="off" readonly />
+            </label>
+            <p class="note">기본 캠페인은 통합파워링크캠페인으로 설정되어 있고, 새 광고그룹명은 거래처)제품명ENDROAS로 저장됩니다.</p>
+          </section>
+
+          <section class="panel">
+            <div class="section-title">소재 입력</div>
+            <label>
+              <span class="label-line">
+                <span>제목 문구</span>
+                <span id="powerlinkHeadlineCount" class="counter">0/15</span>
+              </span>
+              <input id="powerlinkHeadline" autocomplete="off" />
+            </label>
+            <label>
+              <span class="label-line">
+                <span>설명 문구 (20~45자)</span>
+                <span id="powerlinkDescriptionCount" class="counter">0/45</span>
+              </span>
+              <textarea id="powerlinkDescription" rows="3"></textarea>
+            </label>
+            <label>
+              <span>확장 소재 이미지</span>
+              <input id="powerlinkImages" type="file" accept="image/*" multiple />
+            </label>
+            <p id="powerlinkSavedImages" class="note">저장된 이미지 없음</p>
+            <div class="section-title subsection-title">추가 확장 소재</div>
+            <label>
+              <span>서브링크 (3~4개, 문구 | 연결 URL)</span>
+              <textarea id="powerlinkSubLinks" rows="5" placeholder="상의 | https://smartstore.naver.com/sample"></textarea>
+            </label>
+            <p id="powerlinkSubLinksCount" class="note">서브링크 0개</p>
+            <label>
+              <span class="label-line">
+                <span>홍보문구</span>
+                <span id="powerlinkPromotionTextCount" class="counter">0/14</span>
+              </span>
+              <input id="powerlinkPromotionText" autocomplete="off" />
+            </label>
+            <label>
+              <span>추가제목 (한 줄에 하나, 각 15자 이하)</span>
+              <textarea id="powerlinkExtensionHeadlines" rows="3"></textarea>
+            </label>
+            <p id="powerlinkExtensionHeadlinesCount" class="note">추가제목 0개</p>
+            <label>
+              <span class="label-line">
+                <span>추가설명</span>
+                <span id="powerlinkExtraDescriptionCount" class="counter">0/45</span>
+              </span>
+              <textarea id="powerlinkExtraDescription" rows="2"></textarea>
+            </label>
+          </section>
+
+          <section class="panel">
+            <div class="section-title">집행값</div>
+            <div class="grid-2">
+              <label>
+                <span>광고그룹 하루 예산</span>
+                <input id="powerlinkAdGroupDailyBudget" inputmode="numeric" />
+              </label>
+              <label>
+                <span>기본 입찰가</span>
+                <input id="powerlinkDefaultBidPrice" inputmode="numeric" />
+              </label>
+            </div>
+            <p class="note">파워링크 기본 입찰가는 340원으로 시작하며, 키워드는 100개 단위로 나눠 등록합니다.</p>
+          </section>
+        </div>
+      </div>
+
+      <div id="displayNativePage" class="tab-page" data-page="displayNative" hidden>
+        <div class="layout">
+          <section class="panel">
+            <div class="section-title">디스플레이 설정</div>
+            <label>
+              <span>기본 캠페인 URL</span>
+              <input id="displayNativeCampaignUrl" autocomplete="off" />
+            </label>
+            <div class="grid-2">
+              <label>
+                <span class="label-line">
+                  <span>생성 광고그룹명</span>
+                  <span id="displayNativeGeneratedNameCount" class="counter">0/50자</span>
+                </span>
+                <input id="displayNativeGeneratedName" autocomplete="off" readonly />
+              </label>
+            </div>
+            <div class="grid-2">
+              <label>
+                <span>하루 예산</span>
+                <input id="displayNativeDailyBudget" inputmode="numeric" />
+              </label>
+              <label>
+                <span>입찰가 한도</span>
+                <input id="displayNativeBidStrategyValue" inputmode="numeric" />
+              </label>
+              <label>
+                <span>시작일시</span>
+                <input id="displayNativeStartAt" type="datetime-local" />
+              </label>
+            </div>
+            <p class="note">시작일시는 새 설정이거나 실행 시점 기준 30분 이내이면 현재시간 + 40분으로 자동 보정됩니다. 입찰가 한도 기본값은 450원입니다. 기본 캠페인은 웹사이트 전환 광고 캠페인 1000001입니다.</p>
+          </section>
+
+          <section class="panel">
+            <div class="section-title">데모그래픽</div>
+            <div class="field-group">
+              <div class="field-label">성별</div>
+              <div class="check-row">
+                <label class="check inline-check">
+                  <input id="displayGenderFemale" type="checkbox" />
+                  <span>여자</span>
+                </label>
+                <label class="check inline-check">
+                  <input id="displayGenderMale" type="checkbox" />
+                  <span>남자</span>
+                </label>
+                <label class="check inline-check">
+                  <input id="displayGenderUnknown" type="checkbox" />
+                  <span>비해당자 포함</span>
+                </label>
+              </div>
+            </div>
+            <div class="field-group">
+              <div class="field-label">연령</div>
+              <div class="check-row">
+                <label class="check inline-check">
+                  <input id="displayAgeModeAll" name="displayAgeMode" type="radio" value="all" />
+                  <span>노출 가능한 모든 연령 선택</span>
+                </label>
+                <label class="check inline-check">
+                  <input id="displayAgeModeManual" name="displayAgeMode" type="radio" value="manual" />
+                  <span>직접선택</span>
+                </label>
+              </div>
+              <div class="age-toolbar">
+                <label class="check inline-check">
+                  <input id="displayAgeSelectAll" type="checkbox" />
+                  <span>모두 선택</span>
+                </label>
+                <label class="check inline-check">
+                  <input id="displayAgeUnknown" type="checkbox" />
+                  <span>비해당자 포함</span>
+                </label>
+              </div>
+              <div class="age-grid">
+                <label class="check inline-check">
+                  <input type="checkbox" name="displayAge" value="14-18" />
+                  <span>14~18세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="displayAge" value="19-24" />
+                  <span>19~24세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="displayAge" value="25-29" />
+                  <span>25~29세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="displayAge" value="30-34" />
+                  <span>30~34세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="displayAge" value="35-39" />
+                  <span>35~39세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="displayAge" value="40-44" />
+                  <span>40~44세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="displayAge" value="45-49" />
+                  <span>45~49세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="displayAge" value="50-54" />
+                  <span>50~54세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="displayAge" value="55-59" />
+                  <span>55~59세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="displayAge" value="60+" />
+                  <span>60세 이상</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="section-title">이미지 소재</div>
+            <div class="asset-preview">
+              <img id="displayProfilePreview" alt="" hidden />
+              <div>
+                <div class="asset-preview-title">현재 프로필 기본값</div>
+                <p id="displaySavedProfileImage" class="note image-note">저장된 이미지 없음</p>
+              </div>
+            </div>
+            <label>
+              <span>프로필 이미지 300x300</span>
+              <input id="displayProfileImage" type="file" accept="image/*" />
+            </label>
+            <label id="displayAdImageDropzone" class="dropzone">
+              <span class="dropzone-title">광고 이미지 일괄 업로드</span>
+              <span class="dropzone-copy">파일명에 1200x1200, 1200x628, 1200x1800, 342x228이 들어간 이미지를 한번에 드래그하거나 선택하세요.</span>
+              <input id="displayAdImages" type="file" accept="image/*" multiple />
+            </label>
+            <p id="displayAdImageBatchStatus" class="note image-note">일괄 선택된 광고 이미지 없음</p>
+            <p class="note">JPG/PNG · 프로필 300×300: 200KB 미만 · 정사각형: 80~800KB · 가로형: 50~500KB · 세로형: 100~1200KB · 배너: 10~130KB. 파일 선택 시와 등록 전에 실제 크기·용량을 검사합니다.</p>
+            <button id="validateDisplayImagesButton" type="button">이미지 크기·용량 검증</button>
+            <label>
+              <span>광고 이미지 1200x1200</span>
+              <input id="displaySquareImage" type="file" accept="image/*" />
+            </label>
+            <div class="asset-preview asset-preview-small">
+              <img id="displaySquarePreview" alt="" hidden />
+              <div>
+                <div class="asset-preview-title">현재 1200x1200 이미지</div>
+                <p id="displaySavedSquareImage" class="note image-note">저장된 이미지 없음</p>
+              </div>
+            </div>
+            <label>
+              <span>광고 이미지 1200x628</span>
+              <input id="displayWideImage" type="file" accept="image/*" />
+            </label>
+            <div class="asset-preview asset-preview-small">
+              <img id="displayWidePreview" alt="" hidden />
+              <div>
+                <div class="asset-preview-title">현재 1200x628 이미지</div>
+                <p id="displaySavedWideImage" class="note image-note">저장된 이미지 없음</p>
+              </div>
+            </div>
+            <label>
+              <span>광고 이미지 1200x1800</span>
+              <input id="displayTallImage" type="file" accept="image/*" />
+            </label>
+            <div class="asset-preview asset-preview-small">
+              <img id="displayTallPreview" alt="" hidden />
+              <div>
+                <div class="asset-preview-title">현재 1200x1800 이미지</div>
+                <p id="displaySavedTallImage" class="note image-note">저장된 이미지 없음</p>
+              </div>
+            </div>
+            <label>
+              <span>광고 이미지 342x228</span>
+              <input id="displayBannerImage" type="file" accept="image/*" />
+            </label>
+            <div class="asset-preview asset-preview-small">
+              <img id="displayBannerPreview" alt="" hidden />
+              <div>
+                <div class="asset-preview-title">현재 342x228 이미지</div>
+                <p id="displaySavedBannerImage" class="note image-note">저장된 이미지 없음</p>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="section-title">설명 문구</div>
+            <label>
+              <span class="label-line">
+                <span>광고 문구</span>
+                <span id="displayAdTextCount" class="counter">0/20</span>
+              </span>
+              <input id="displayAdText" autocomplete="off" placeholder="광고 문구를 입력해 주세요." />
+            </label>
+            <label>
+              <span class="label-line">
+                <span>설명 문구1</span>
+                <span id="displayShortDescription1Count" class="counter">0/12</span>
+              </span>
+              <input id="displayShortDescription1" autocomplete="off" placeholder="설명 문구 첫 문장" />
+            </label>
+            <label>
+              <span class="label-line">
+                <span>설명 문구2</span>
+                <span id="displayShortDescription2Count" class="counter">0/12</span>
+              </span>
+              <input id="displayShortDescription2" autocomplete="off" placeholder="설명 문구 두 번째 문장" />
+            </label>
+            <label>
+              <span class="label-line">
+                <span>설명 문구3</span>
+                <span id="displayShortDescription3Count" class="counter">0/12</span>
+              </span>
+              <input id="displayShortDescription3" autocomplete="off" placeholder="설명 문구 세 번째 문장" />
+            </label>
+            <label>
+              <span class="label-line">
+                <span>PC 배너형 긴 설명문구 1</span>
+                <span id="displayLongDescription1Count" class="counter">0/28</span>
+              </span>
+              <input id="displayLongDescription1" autocomplete="off" placeholder="긴 설명 문구 첫문장" />
+            </label>
+            <label>
+              <span class="label-line">
+                <span>PC 배너형 긴 설명문구 2</span>
+                <span id="displayLongDescription2Count" class="counter">0/28</span>
+              </span>
+              <input id="displayLongDescription2" autocomplete="off" placeholder="긴 설명 문구 두 번째 문장" />
+            </label>
+          </section>
+        </div>
+      </div>
+
+      <div id="shoppingPromotionPage" class="tab-page" data-page="shoppingPromotion" hidden>
+        <div class="layout">
+          <section class="panel">
+            <div class="section-title">쇼핑 프로모션 설정</div>
+            <label>
+              <span>기본 캠페인 URL</span>
+              <input id="shoppingPromotionCampaignUrl" autocomplete="off" />
+            </label>
+            <div class="grid-2">
+              <label>
+                <span class="label-line">
+                  <span>생성 광고그룹명</span>
+                  <span id="shoppingPromotionGeneratedNameCount" class="counter">0/50자</span>
+                </span>
+                <input id="shoppingPromotionGeneratedName" autocomplete="off" readonly />
+              </label>
+            </div>
+            <div class="grid-2">
+              <label>
+                <span>하루 예산</span>
+                <input id="shoppingPromotionDailyBudget" inputmode="numeric" />
+              </label>
+              <label>
+                <span>입찰가 한도</span>
+                <input id="shoppingPromotionBidStrategyValue" inputmode="numeric" />
+              </label>
+              <label>
+                <span>시작일시</span>
+                <input id="shoppingPromotionStartAt" type="datetime-local" />
+              </label>
+            </div>
+            <p class="note">기본 캠페인은 쇼핑 프로모션 캠페인 1000004입니다. 광고그룹명은 거래처)제품명ENDROAS로 저장됩니다.</p>
+          </section>
+
+          <section class="panel">
+            <div class="section-title">데모그래픽</div>
+            <div class="field-group">
+              <div class="field-label">성별</div>
+              <div class="check-row">
+                <label class="check inline-check">
+                  <input id="shoppingPromotionGenderFemale" type="checkbox" />
+                  <span>여자</span>
+                </label>
+                <label class="check inline-check">
+                  <input id="shoppingPromotionGenderMale" type="checkbox" />
+                  <span>남자</span>
+                </label>
+                <label class="check inline-check">
+                  <input id="shoppingPromotionGenderUnknown" type="checkbox" />
+                  <span>비해당자 포함</span>
+                </label>
+              </div>
+            </div>
+            <div class="field-group">
+              <div class="field-label">연령</div>
+              <div class="check-row">
+                <label class="check inline-check">
+                  <input id="shoppingPromotionAgeModeAll" name="shoppingPromotionAgeMode" type="radio" value="all" />
+                  <span>노출 가능한 모든 연령 선택</span>
+                </label>
+                <label class="check inline-check">
+                  <input id="shoppingPromotionAgeModeManual" name="shoppingPromotionAgeMode" type="radio" value="manual" />
+                  <span>직접선택</span>
+                </label>
+              </div>
+              <div class="age-toolbar">
+                <label class="check inline-check">
+                  <input id="shoppingPromotionAgeSelectAll" type="checkbox" />
+                  <span>모두 선택</span>
+                </label>
+                <label class="check inline-check">
+                  <input id="shoppingPromotionAgeUnknown" type="checkbox" />
+                  <span>비해당자 포함</span>
+                </label>
+              </div>
+              <div class="age-grid">
+                <label class="check inline-check">
+                  <input type="checkbox" name="shoppingPromotionAge" value="14-18" />
+                  <span>14~18세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="shoppingPromotionAge" value="19-24" />
+                  <span>19~24세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="shoppingPromotionAge" value="25-29" />
+                  <span>25~29세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="shoppingPromotionAge" value="30-34" />
+                  <span>30~34세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="shoppingPromotionAge" value="35-39" />
+                  <span>35~39세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="shoppingPromotionAge" value="40-44" />
+                  <span>40~44세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="shoppingPromotionAge" value="45-49" />
+                  <span>45~49세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="shoppingPromotionAge" value="50-54" />
+                  <span>50~54세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="shoppingPromotionAge" value="55-59" />
+                  <span>55~59세</span>
+                </label>
+                <label class="check inline-check">
+                  <input type="checkbox" name="shoppingPromotionAge" value="60+" />
+                  <span>60세 이상</span>
+                </label>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel">
+            <div class="section-title">이미지 소재</div>
+            <div class="asset-preview">
+              <img id="shoppingPromotionImagePreview" alt="" hidden />
+              <div>
+                <div class="asset-preview-title">현재 쇼핑 프로모션 이미지</div>
+                <p id="shoppingPromotionSavedImage" class="note image-note">저장된 이미지 없음</p>
+              </div>
+            </div>
+            <label>
+              <span>광고 이미지 750x500</span>
+              <input id="shoppingPromotionImage" type="file" accept="image/*" />
+            </label>
+            <p class="note">쇼핑 프로모션 이미지는 750x500px 1장만 업로드합니다.</p>
+          </section>
+
+          <section class="panel">
+            <div class="section-title">광고 문구</div>
+            <label>
+              <span class="label-line">
+                <span>광고 문구</span>
+                <span id="shoppingPromotionAdTextCount" class="counter">0/57</span>
+              </span>
+              <textarea id="shoppingPromotionAdText" rows="3" placeholder="고급소재 니트 카라 반팔, 3만원대. 무조건 무료배송!"></textarea>
+            </label>
+          </section>
+        </div>
+      </div>
+
+      <div class="layout common-layout">
+        <section class="panel">
+          <div class="section-title">브라우저</div>
+          <div class="grid-2">
+            <label>
+              <span>실행 방식</span>
+              <select id="browserMode">
+                <option value="profile">전용 자동화 프로필</option>
+                <option value="existingChrome">현재 Chrome 연결</option>
+              </select>
+            </label>
+            <label>
+              <span>CDP URL</span>
+              <input id="browserCdpUrl" autocomplete="off" />
+            </label>
+          </div>
+          <p class="note">현재 Chrome 연결은 Chrome을 원격 디버깅 모드로 실행한 경우에만 사용할 수 있습니다.</p>
+        </section>
+
+        <section class="panel">
+          <div class="section-title">HTTP 호출 분석</div>
+          <p id="recordingText" class="note">기록 대기 중</p>
+          <div class="inline-actions">
+            <button id="recordStartButton" type="button">호출 기록 시작</button>
+            <button id="recordStopButton" type="button">호출 기록 종료</button>
+          </div>
+          <p class="note">네이버 화면에서 직접 저장할 때 발생한 XHR/fetch 요청을 저장합니다. 쿠키와 인증 헤더는 파일에 남기지 않습니다.</p>
+        </section>
+      </div>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>
