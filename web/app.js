@@ -283,7 +283,7 @@ fields.commonEndRoas.addEventListener('input', syncCommonSettings);
 fields.commonProductUrl.addEventListener('input', syncCommonProductUrl);
 fields.exposureProductName.addEventListener('input', renderExposureProductNameCounter);
 fields.powerlinkKeyword.addEventListener('input', syncPowerlinkMaterialDefaults);
-fields.powerlinkKeywordList.addEventListener('input', renderPowerlinkKeywordCount);
+fields.powerlinkKeywordList.addEventListener('input', enforcePowerlinkKeywordLimit);
 for (const input of [
   fields.powerlinkSubLinks,
   fields.powerlinkPromotionText,
@@ -1435,9 +1435,19 @@ function parsePowerlinkExtensionHeadlines(value) {
     .filter(Boolean);
 }
 
+function enforcePowerlinkKeywordLimit() {
+  const keywords = parsePowerlinkKeywords(fields.powerlinkKeywordList.value);
+  if (keywords.length > 1000) {
+    fields.powerlinkKeywordList.value = keywords.slice(0, 1000).join('\n');
+    setStatus(`키워드는 최대 1,000개까지 입력할 수 있습니다. 앞의 1,000개를 유지하고 초과 ${keywords.length - 1000}개는 제외했습니다.`);
+  }
+  renderPowerlinkKeywordCount();
+}
+
 function renderPowerlinkKeywordCount() {
   const count = parsePowerlinkKeywords(fields.powerlinkKeywordList.value).length;
-  fields.powerlinkKeywordCount.textContent = `키워드 ${count.toLocaleString('ko-KR')}개`;
+  fields.powerlinkKeywordCount.textContent = `키워드 ${count.toLocaleString('ko-KR')} / 1,000개`;
+  fields.powerlinkKeywordCount.classList.toggle('limit-exceeded', count > 1000);
 }
 
 function renderPowerlinkTextCounters() {
