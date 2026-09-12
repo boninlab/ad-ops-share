@@ -8,7 +8,6 @@ export async function registerShoppingExtensions(
   onRegistered: (id: string) => Promise<void> = async () => {}
 ) {
   const ids: string[] = [];
-  if (!settings.useTalkTalk && !settings.promotionText1) return ids;
 
   await page.getByRole('button', { name: '확장 소재', exact: true }).click();
   const addButton = page.getByRole('button', { name: '새 확장 소재', exact: true });
@@ -40,7 +39,7 @@ export async function registerShoppingExtensions(
     await page.locator(`[id="lock-${body.nccAdExtensionId}"]`).waitFor({ state: 'visible' });
   };
 
-  if (settings.useTalkTalk) {
+  {
     const existingTalk = page.getByRole('row').filter({ has: page.getByText('네이버 톡톡', { exact: true }) });
     if (await existingTalk.count()) {
       if (!(await existingTalk.innerText()).includes(settings.talkTalkUrl.replace(/^https?:/, ''))) {

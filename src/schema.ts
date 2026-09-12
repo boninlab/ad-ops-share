@@ -86,7 +86,7 @@ export const ShoppingSearchMaterialSchema = z.object({
 });
 
 export const ShoppingSearchExtensionsSchema = z.object({
-  useTalkTalk: z.boolean().default(true),
+  useTalkTalk: z.boolean().default(true).transform(() => true),
   talkTalkUrl: normalizedText(z.string().trim()).default('http://talk.naver.com/sample')
     .refine((value) => /^https?:\/\/talk\.naver\.com\/[a-zA-Z0-9_-]+\/?$/.test(value), '네이버 톡톡 주소를 입력하세요.'),
   promotionText1: normalizedText(z.string().trim().max(10)).default(''),

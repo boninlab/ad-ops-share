@@ -10,7 +10,7 @@
     "vendorName": "샘플스토어",
     "productName": "와이드청바지",
     "endRoas": "300",
-    "productId": "sample",
+    "productId": "123456",
     "exposureProductName": "샘플 와이드 데님 청바지"
   },
   "campaign": {
@@ -32,7 +32,7 @@
   "products": [
     {
       "searchType": "productId",
-      "query": "sample",
+      "query": "123456",
       "expectedName": ""
     }
   ],
@@ -53,7 +53,7 @@
     "material": {
       "headline": "매일 입는 와이드청바지",
       "description": "여유로운 와이드핏과 자연스러운 데님 컬러로 완성하는 데일리룩",
-      "productLink": "https://smartstore.naver.com/sample/products/sample"
+      "productLink": "https://smartstore.naver.com/sample/products/123456"
     },
     "keywords": [
       "와이드청바지",
@@ -130,7 +130,7 @@
       "includeUnknownAge": true
     },
     "material": {
-      "landingUrl": "https://smartstore.naver.com/sample/products/sample",
+      "landingUrl": "https://smartstore.naver.com/sample/products/123456",
       "adText": "매일 입는 와이드 청바지",
       "descriptions": {
         "short1": "여유로운 와이드핏",
@@ -210,7 +210,7 @@
       "includeUnknownAge": true
     },
     "material": {
-      "landingUrl": "https://smartstore.naver.com/sample/products/sample",
+      "landingUrl": "https://smartstore.naver.com/sample/products/123456",
       "adText": "여유로운 와이드핏과 자연스러운 데님 컬러, 매일 입는 와이드 청바지"
     },
     "imageAsset": {
@@ -222,7 +222,7 @@
     }
   },
   "extensions": {
-    "useTalkTalk": false,
+    "useTalkTalk": true,
     "talkTalkUrl": "http://talk.naver.com/sample",
     "promotionText1": "여유로운 와이드핏",
     "promotionText2": "매일 입기 좋은 샘플 와이드 데님 청바지"

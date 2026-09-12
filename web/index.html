@@ -71,8 +71,8 @@
             </div>
             <div class="grid-2">
               <label>
-                <span>노출용 상품명</span>
-                <input id="exposureProductName" autocomplete="off" />
+                <span class="label-line"><span>노출용 상품명</span><span id="exposureProductNameCount" class="note">0/25자</span></span>
+                <input id="exposureProductName" autocomplete="off" maxlength="25" />
               </label>
             </div>
             <label>
@@ -87,9 +87,8 @@
 
           <section class="panel">
             <div class="section-title">확장 소재</div>
-            <label class="check"><input id="shoppingUseTalkTalk" type="checkbox" checked /><span>네이버 톡톡 등록</span></label>
             <label><span>네이버 톡톡 주소</span><input id="shoppingTalkTalkUrl" autocomplete="off" placeholder="http://talk.naver.com/sample" /></label>
-            <p class="note">비즈채널에 등록된 톡톡을 새 광고그룹에 연결합니다.</p>
+            <p class="note">비즈채널에 등록된 톡톡을 새 광고그룹에 항상 연결합니다.</p>
             <label>
               <span class="label-line"><span>추가홍보문구 1</span><span id="shoppingPromotionText1Count" class="counter">0/10자</span></span>
               <input id="shoppingPromotionText1" autocomplete="off" placeholder="예: 뒷밴딩 편안한 팬츠" />

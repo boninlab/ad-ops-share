@@ -82,7 +82,6 @@ const SHOPPING_GENERATED_NAME_LIMIT = 30;
 const DISPLAY_GENERATED_NAME_LIMIT = 50;
 
 const fields = {
-  shoppingUseTalkTalk: document.querySelector('#shoppingUseTalkTalk'),
   shoppingTalkTalkUrl: document.querySelector('#shoppingTalkTalkUrl'),
   shoppingPromotionText1: document.querySelector('#shoppingPromotionText1'),
   shoppingPromotionText2: document.querySelector('#shoppingPromotionText2'),
@@ -282,6 +281,7 @@ fields.commonVendorName.addEventListener('input', syncCommonSettings);
 fields.commonProductName.addEventListener('input', syncCommonSettings);
 fields.commonEndRoas.addEventListener('input', syncCommonSettings);
 fields.commonProductUrl.addEventListener('input', syncCommonProductUrl);
+fields.exposureProductName.addEventListener('input', renderExposureProductNameCounter);
 fields.powerlinkKeyword.addEventListener('input', syncPowerlinkMaterialDefaults);
 fields.powerlinkKeywordList.addEventListener('input', renderPowerlinkKeywordCount);
 for (const input of [
@@ -419,7 +419,8 @@ async function loadConfig() {
     currentConfig.template?.exposureProductName || currentConfig.material?.exposureProductName || autoExposureProductName,
     MAX_SHOPPING_EXPOSURE_PRODUCT_NAME_LENGTH
   );
-  lastAutoExposureProductName = autoExposureProductName;
+  lastAutoExposureProductName = fields.exposureProductName.value;
+  renderExposureProductNameCounter();
 
   fields.powerlinkCampaignUrl.value = powerlink.campaignUrl;
   fields.powerlinkKeyword.value = powerlink.template.keyword;
@@ -482,7 +483,6 @@ async function loadConfig() {
   renderShoppingPromotionAdTextCounter();
   renderShoppingPromotionSavedImage(shoppingPromotion.imageAsset);
 
-  fields.shoppingUseTalkTalk.checked = currentConfig.extensions?.useTalkTalk !== false;
   fields.shoppingTalkTalkUrl.value = currentConfig.extensions?.talkTalkUrl ?? 'http://talk.naver.com/sample';
   fields.shoppingPromotionText1.value = normalizeText(currentConfig.extensions?.promotionText1);
   fields.shoppingPromotionText2.value = normalizeText(currentConfig.extensions?.promotionText2);
@@ -759,7 +759,7 @@ function readConfigFromForm({ strict, powerlinkImageAssets, displayNativeImageAs
   const adGroupDailyBudget = readPositiveInteger(fields.adGroupDailyBudget.value, '광고그룹 하루 예산');
   const defaultBidPrice = readPositiveInteger(fields.defaultBidPrice.value, '기본 입찰가');
   const extensions = {
-    useTalkTalk: fields.shoppingUseTalkTalk.checked,
+    useTalkTalk: true,
     talkTalkUrl: readTextField(fields.shoppingTalkTalkUrl) || 'http://talk.naver.com/sample',
     promotionText1: readTextField(fields.shoppingPromotionText1),
     promotionText2: readTextField(fields.shoppingPromotionText2)
@@ -1248,6 +1248,11 @@ function readShoppingPromotionConfig({ strict, uploadedAsset }) {
   };
 }
 
+function renderExposureProductNameCounter() {
+  fields.exposureProductName.value = limitTextLength(fields.exposureProductName.value, MAX_SHOPPING_EXPOSURE_PRODUCT_NAME_LENGTH);
+  document.querySelector('#exposureProductNameCount').textContent = `${countTextLength(fields.exposureProductName.value)}/25자`;
+}
+
 function syncCommonSettings() {
   syncGeneratedFields();
   updatePowerlinkGeneratedNamePreview();
@@ -1258,7 +1263,7 @@ function syncCommonSettings() {
 
 function syncCommonProductUrl() {
   const productId = extractProductIdFromUrl(fields.commonProductUrl.value);
-  if (productId && (!readTextField(fields.productId) || readTextField(fields.productId) === lastAutoProductId)) {
+  if (productId) {
     fields.productId.value = productId;
   }
   lastAutoProductId = productId;
@@ -1275,6 +1280,7 @@ function syncGeneratedFields() {
   }
 
   lastAutoExposureProductName = nextAutoExposureProductName;
+  renderExposureProductNameCounter();
   updateGeneratedNamePreview();
 }
 
