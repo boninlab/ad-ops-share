@@ -7,27 +7,27 @@
   "runOutputDir": "runs",
   "submitMode": "manual",
   "template": {
-    "vendorName": "샘플스토어",
+    "vendorName": "루소",
     "productName": "와이드청바지",
-    "endRoas": "300",
+    "endRoas": "300.98",
     "productId": "123456",
-    "exposureProductName": "샘플 와이드 데님 청바지"
+    "exposureProductName": "남자 와이드 청바지"
   },
   "campaign": {
-    "name": "샘플스토어)와이드청바지300",
+    "name": "루소)와이드청바지300.98",
     "dailyBudget": 10000,
     "useAutoTracking": true,
     "useBudgetDistribution": false
   },
   "adGroup": {
-    "name": "샘플스토어)와이드청바지300",
+    "name": "루소)와이드청바지300.98",
     "mallName": "",
     "shoppingPartnerCenterId": "",
     "defaultBidPrice": 340,
     "dailyBudget": 10000
   },
   "material": {
-    "exposureProductName": "샘플 와이드 데님 청바지"
+    "exposureProductName": "남자 와이드 청바지"
   },
   "products": [
     {
@@ -40,13 +40,13 @@
     "campaignUrl": "https://ads.naver.com/manage/ad-accounts/1000000/sa/campaigns/cmp-a001-01-000000000000001",
     "campaignId": "cmp-a001-01-000000000000001",
     "template": {
-      "vendorName": "샘플스토어",
+      "vendorName": "루소",
       "productName": "와이드청바지",
-      "endRoas": "300",
+      "endRoas": "300.98",
       "keyword": "와이드청바지"
     },
     "adGroup": {
-      "name": "샘플스토어)와이드청바지300",
+      "name": "루소)와이드청바지300.98",
       "defaultBidPrice": 340,
       "dailyBudget": 10000
     },
@@ -101,12 +101,12 @@
     "campaignUrl": "https://ads.naver.com/manage/ad-accounts/1000000/da/dashboard/campaign/1000001",
     "campaignId": "1000001",
     "template": {
-      "vendorName": "샘플스토어",
+      "vendorName": "루소",
       "productName": "와이드청바지",
-      "endRoas": "300"
+      "endRoas": "300.98"
     },
     "adGroup": {
-      "name": "샘플스토어)와이드청바지300",
+      "name": "루소)와이드청바지300.98",
       "dailyBudget": 10000,
       "bidStrategyValue": 450,
       "startAt": ""
@@ -182,12 +182,12 @@
     "campaignUrl": "https://ads.naver.com/manage/ad-accounts/1000000/da/dashboard/campaign/1000004",
     "campaignId": "1000004",
     "template": {
-      "vendorName": "샘플스토어",
+      "vendorName": "루소",
       "productName": "와이드청바지",
-      "endRoas": "300"
+      "endRoas": "300.98"
     },
     "adGroup": {
-      "name": "샘플스토어)와이드청바지300",
+      "name": "루소)와이드청바지300.98",
       "dailyBudget": 10000,
       "startAt": ""
     },

@@ -419,7 +419,7 @@ async function loadConfig() {
     currentConfig.template?.exposureProductName || currentConfig.material?.exposureProductName || autoExposureProductName,
     MAX_SHOPPING_EXPOSURE_PRODUCT_NAME_LENGTH
   );
-  lastAutoExposureProductName = fields.exposureProductName.value;
+  lastAutoExposureProductName = autoExposureProductName;
   renderExposureProductNameCounter();
 
   fields.powerlinkCampaignUrl.value = powerlink.campaignUrl;
